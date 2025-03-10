@@ -12,12 +12,10 @@ const PORT = process.env.PORT || 3000;
 // app.use(express.urlencoded({ extended: false }));  // هذا مطلوب لـ x-www-form-urlencoded
 app.use(express.json());
  
-res.setHeader('Content-Type', 'application/json');  
-
+ 
 app.get("/", (req, res) => {  
 res.json({ message: "Hello, world!" });  
-  res.send(JSON.stringify({ message: "Hello, world!" }));  
-});  
+ });  
 app.use("/api118259y", LoginUserRout);
 app.use("/api118259y", UserRoutes);
 app.use("/api118259y", RegisterUserRout);
