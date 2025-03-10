@@ -9,7 +9,7 @@ async function getAllData(table, where = null, values = null, json = true) {
   const connection = await getConnection(); // الحصول على الاتصال
 
   // بناء الاستعلام الأساسي
-  let query = `SELECT * FROM ${table}`;
+  let query = "SELECT * FROM `users`";
 
   // إضافة شرط WHERE إذا كان موجودًا
   if (where) {
