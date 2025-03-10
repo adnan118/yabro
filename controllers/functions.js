@@ -8,13 +8,14 @@ const { getConnection } = require("./db");
 async function getAllData(table, where = null, values = null, json = true) {
   const connection = await getConnection(); // الحصول على الاتصال
 
-  // بناء الاستعلام الأساسي
-  let query = "SELECT * FROM `users`";
+   // بناء الاستعلام الأساسي
+  let query = `SELECT * FROM ${table}`;
 
   // إضافة شرط WHERE إذا كان موجودًا
   if (where) {
-    query += ` WHERE 1`;
+    query += ` WHERE ${where}`;
   }
+
 
   // ضبط القيم للاستعلام
   let queryValues = values ? values : [];
@@ -27,7 +28,7 @@ async function getAllData(table, where = null, values = null, json = true) {
   } catch (error) {
     console.error("Database query error: ", error);
     await connection.end();
-    return { status: "failure", message: "There is a problem retrieving data" }; // رسالة الخطأ
+    return { status: "failure", message: "There is a problem retrieving data f" }; // رسالة الخطأ
   }
 }
 // دالة لاسترجاع بيانات فردية
