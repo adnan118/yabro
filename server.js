@@ -16,7 +16,7 @@ const mysql = require("mysql2/promise");
 // إعداد اتصال قاعدة البيانات  
 const dbConfig = {  
 host: "mysql11.serv00.com",
-  user: "m1241_yabro",
+  user: "m1241_yabrou",
   password: "Yabro.2025",
   database: "m1241_yabro",
 };  
