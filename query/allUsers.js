@@ -1,29 +1,30 @@
 const { getAllData } = require("../controllers/functions");
+ 
+const { getConnection } = require("./db");
 
 // دالة لجلب بيانات منتج بناءً على معرفه
 async function AllUsers(req, res) {
   try {
-     
-   
-    const result = await getAllData("users");
-     res
-      .status(500)
-      .json({
-        status: "1",
-        message: "1 q",
-      });
-    res.json(result);
-    console.log(result);
+    // الحصول على اتصال من تجمع الاتصالات
+    const connection = await getConnection(); // الحصول على الاتصال
+
+    // الاستعلام عن جميع المستخدمين
+    const [results] = await connection.execute("SELECT * FROM users");
+
+    // تحرير الاتصال بعد الانتهاء
+    connection.release();
+
+    res.json({ status: "success", data: results }); // هيكل موحد
+    console.log(results);
   } catch (error) {
-    console.error("Error fetching data: ", error);
-    res
-      .status(500)
-      .json({
-        status: "failure",
-        message: "There is a problem retrieving data q",
-      });
+    console.error("Database query error: ", error);
+    res.status(500).json({
+      status: "failure",
+      message: "There is a problem retrieving data",
+    });
   }
-}
+}  
+
 
 // تصدير الدوال
 module.exports = { AllUsers };
