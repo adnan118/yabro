@@ -12,7 +12,7 @@ async function AllUsers(req, res) {
       .status(500)
       .json({
         status: "failure",
-        message: "There is a problem retrieving data",
+        message: "There is a problem retrieving data q",
       });
   }
 }
