@@ -13,7 +13,7 @@ async function getAllData(table, where = null, values = null, json = true) {
 
   // إضافة شرط WHERE إذا كان موجودًا
   if (where) {
-    query += ` WHERE ${where}`;
+    query += ` WHERE 1`;
   }
 
   // ضبط القيم للاستعلام
