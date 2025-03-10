@@ -4,14 +4,14 @@ const { getAllData } = require("../controllers/functions");
 async function AllUsers(req, res) {
   try {
      
-    res
+   
+    const result = await getAllData("users");
+     res
       .status(500)
       .json({
         status: "1",
         message: "1 q",
       });
-    const result = await getAllData("users");
-    
     res.json(result);
     console.log(result);
   } catch (error) {
