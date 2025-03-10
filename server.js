@@ -1,7 +1,7 @@
 // server.js
 
 const express              = require("express");
-const userRoutes           = require("./routes/allUsers");
+const UserRoutes           = require("./routes/allUsers");
 const LoginUserRout        = require("./routes/authRoutes/LoginUserRout");
 const RegisterUserRout     = require("./routes/authRoutes/RegisterUserRout");
 const VerifyUserRout       = require("./routes/authRoutes/VfcRout");
@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
   res.send("مرحبا!");  
 });  
 app.use("/api118259y", LoginUserRout);
-app.use("/api118259y", userRoutes);
+app.use("/api118259y", UserRoutes);
 app.use("/api118259y", RegisterUserRout);
 app.use("/api118259y", VerifyUserRout);
 app.use("/api118259y", ResendVerifyUserRout);
