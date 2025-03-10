@@ -38,7 +38,8 @@ async function getConnection() {
 
 
 app.get("/", (req, res) => {  
-res.json({ message: "Hello, world!" });   getConnection();
+//res.json({ message: "Hello, world!" }); 
+ getConnection();
  
  });  
 app.use("/api118259y", LoginUserRout);
