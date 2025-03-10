@@ -11,7 +11,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 // app.use(express.urlencoded({ extended: false }));  // هذا مطلوب لـ x-www-form-urlencoded
 app.use(express.json());
-
+app.get("/", (req, res) => {  
+  res.send("مرحبا!");  
+});  
 app.use("/api118259y", LoginUserRout);
 app.use("/api118259y", userRoutes);
 app.use("/api118259y", RegisterUserRout);
