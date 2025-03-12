@@ -1,5 +1,5 @@
 // server.js  
-
+/*
 const express = require("express");  
 const UserRoutes = require("./routes/allUsers");  
 const LoginUserRout = require("./routes/authRoutes/LoginUserRout");  
@@ -51,3 +51,21 @@ app.use("/api118259y", ResendVerifyUserRout);
 app.listen(PORT, () => {  
   console.log(`Server is running on http://localhost:${PORT}`);  
 });  
+*/
+// routes/allUsers.js  
+const express = require("express");  
+const { executeQuery } = require("../controllers/database");  
+const router = express.Router();  
+
+// مسار لجلب جميع المستخدمين  
+router.get("/users", async (req, res) => {  
+  try {  
+    const users = await executeQuery("SELECT * FROM users"); // تأكد من وجود الجدول  
+    res.json(users);  
+  } catch (error) {  
+    console.error(error);  
+    res.status(500).json({ message: "خطأ في الخادم" });  
+  }  
+});  
+
+module.exports = router;  
