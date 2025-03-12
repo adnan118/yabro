@@ -12,7 +12,7 @@ const dbConfig = {
 */
 const dbConfig = {  
   host: "mysql.railway.internal",  
-  user: "rootana",  
+  user: "root",  
   password: "YrRDAzFHoLEbnSHGffiEAkrrToUKBCnD",  
   database: "railway"
 };  
