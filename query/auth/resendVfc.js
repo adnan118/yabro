@@ -16,12 +16,12 @@ function generateVerificationCode(length) {
 // دالة لإعادة إرسال رمز التحقق
 async function resendVerificationCode(req, res) {
   try {
-    const { email } = req.body; // الحصول على البريد الإلكتروني من الجسم
+    const { users_email } = req.body; // الحصول على البريد الإلكتروني من الجسم
    // الحصول على الجزء قبل علامة "@"
-    const username = email.split("@")[0];
+    const username = users_email.split("@")[0];
 
     // التحقق من وجود البريد الإلكتروني
-    if (!email) {
+    if (!users_email) {
       return res.status(400).json({
         status: "failure",
         message: "You must enter your email.",
@@ -37,14 +37,14 @@ async function resendVerificationCode(req, res) {
 
     // تحديث كود التحقق في قاعدة البيانات
     const updateResponse = await updateData("users", data, "users_email = ?", [
-      email,
+      users_email,
     ]);
 
     if (updateResponse.status === "success") {
       // إرسال البريد الإلكتروني برمز التحقق الجديد
       sentMail(
-        email,
-          "adnanbarakat111@gmail.com",
+        users_email,
+        "adnanbarakat111@gmail.com",
         username,
         "Hello! Yabro",
         verificationCode,
