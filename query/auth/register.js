@@ -81,8 +81,9 @@ async function RegisterUser(req, res) {
         });
       } else {
         res.status(500).json({
-          status: "failure",
-          message: "Failed to register user.",
+          status: "failure", 
+            message: `Failed to register user. ${users_email}, ${users_password}, ${users_phone}`,  
+
         });
       }
     }
