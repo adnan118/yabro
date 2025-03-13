@@ -50,7 +50,7 @@ async function RegisterUser(req, res) {
 
     // إدخال البيانات في قاعدة البيانات
     const userData = {
-      users_id:111,
+     
       users_name: username,
       users_email: users_email,
       users_password: hashedPassword,
@@ -73,7 +73,7 @@ async function RegisterUser(req, res) {
         message: "User already exists with this email or phone.",
       });
     } else {
-      const result = await insertData("users", userData);
+      const result = await insertData("userss", userData);
 
       if (result.status === "success") {
         res.json({
