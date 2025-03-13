@@ -22,14 +22,14 @@ function generateVerificationCode(length) {
 // دالة لتسجيل مستخدم جديد
 async function RegisterUser(req, res) {
   try {
-    const { email, password, phone } = req.body;
+    const { users_email, users_password, users_phone } = req.body;
     
     // الحصول على الجزء قبل علامة "@"
-    const username = email.split("@")[0];
+    const username = users_email.split("@")[0];
 
     
     // التحقق من وجود البيانات
-    if (!email || !password || !phone) {
+    if (!users_email || !users_password || !users_phone) {
       return res.status(400).json({
         status: "failure",
         message: "All information must be entered.",
@@ -40,13 +40,13 @@ async function RegisterUser(req, res) {
     const checkUser = await getAllData(
       "users",
       "users_email = ? OR users_phone = ?",
-      [email, phone]
+      [users_email, users_phone]
     );
 
  
 
     // تشفير كلمة المرور
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(users_password, 10);
 
     // توليد كود تحقق عشوائي مكون من أحرف وأرقام
     const verificationCode = generateVerificationCode(6); // يمكن تغيير الطول حسب الحاجة
@@ -54,9 +54,10 @@ async function RegisterUser(req, res) {
     // إدخال البيانات في قاعدة البيانات
     const userData = {
       users_name: username,
-      users_email: email,
+      users_email: users_email,
       users_password: hashedPassword,
-      users_phone: phone,
+      users_phone: users_phone,
+      users_img: "../../controllers/imgs/YabrotextLogo.png",
       users_verflyCode: verificationCode, // إضافة كود التحقق هنا
     };
 
