@@ -50,6 +50,7 @@ async function RegisterUser(req, res) {
 
     // إدخال البيانات في قاعدة البيانات
     const userData = {
+      users_id:111,
       users_name: username,
       users_email: users_email,
       users_password: hashedPassword,
