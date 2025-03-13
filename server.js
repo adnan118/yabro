@@ -11,27 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;  
 app.use(express.json());  
 
-const mysql = require("mysql2/promise");  
-
-// إعداد اتصال قاعدة البيانات  
-const dbConfig = {  
-host: "mysql.railway.internal",
-  user: "root",
-  password: "OJqazGQGUuBRhygpsVpDefAHKacQgKgg",
-  database: "railway" ,
-};  
-// دالة للحصول على اتصال بقاعدة البيانات  
-async function getConnection() {  
-  try {  
-    const connection = await mysql.createConnection(dbConfig);  
-    console.log("Connection to the database established successfully!");  
-    await connection.end(); // اغلق الاتصال بعد التحقق  
-    return connection;  
-  } catch (error) {  
-    console.error("Failed to connect to the database:", error);  
-    throw error; // ذلك سيساعدك على إدارة الأخطاء في مختلف الأماكن التي تستخدم فيها هذه الدالة  
-  }  
-}  
+ 
 
 app.get("/", async (req, res) => {  
   try {  
