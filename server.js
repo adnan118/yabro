@@ -18,7 +18,7 @@ const dbConfig = {
 host: "mysql.railway.internal",
   user: "root",
   password: "OJqazGQGUuBRhygpsVpDefAHKacQgKgg",
-  database: "railway",
+  database: "railway" ,
 };  
 // دالة للحصول على اتصال بقاعدة البيانات  
 async function getConnection() {  
