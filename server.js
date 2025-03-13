@@ -6,6 +6,7 @@ const registerUserRoute = require("./routes/authRoutes/RegisterUserRout");
 const verifyUserRoute = require("./routes/authRoutes/VfcRout");  
 const resendVerifyUserRoute = require("./routes/authRoutes/ResendVfcUserRout");  
 const getConnection = require("./controllers/db/getConnection");  
+const mysql = require("mysql2/promise");
 
 const app = express();  
 const PORT = process.env.PORT || 3000;  
