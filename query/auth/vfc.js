@@ -6,10 +6,10 @@ const nodemailer = require("nodemailer"); // استخدم nodemailer لإرسا�
 // دالة للتحقق من البريد الإلكتروني وكود التحقق
 async function VerifyUser(req, res) {
   try {
-    const {  email,  verflyCode } = req.body; // الحصول على البريد وكود التحقق من الجسم
+    const { users_email, users_verflyCode } = req.body; // الحصول على البريد وكود التحقق من الجسم
 
     // التحقق من وجود البيانات
-    if (!email || !verflyCode) {
+    if (!users_email || !users_verflyCode) {
       return res.status(400).json({
         status: "failure",
         message: "You must enter your email and verification code.",
@@ -20,7 +20,7 @@ async function VerifyUser(req, res) {
     const result = await getAllData(
       "users",
       "users_email = ? AND users_verflyCode = ?",
-      [email, verflyCode]
+      [users_email, users_verflyCode]
     );
 
     // التحقق من النتيجة
@@ -30,7 +30,7 @@ async function VerifyUser(req, res) {
         "users",
         { users_approve: "1" },
         "users_email = ?",
-        [email]
+        [users_email]
       );
 
       if (updateResponse.status === "success") {
