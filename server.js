@@ -5,7 +5,7 @@ const loginUserRoute = require("./routes/authRoutes/LoginUserRout");
 const registerUserRoute = require("./routes/authRoutes/RegisterUserRout");  
 const verifyUserRoute = require("./routes/authRoutes/VfcRout");  
 const resendVerifyUserRoute = require("./routes/authRoutes/ResendVfcUserRout");  
-const getConnection = require("./controllers/db/getConnection");  
+ 
 const mysql = require("mysql2/promise");
 // إعداد اتصال قاعدة البيانات  
 const dbConfig = {  
