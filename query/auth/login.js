@@ -41,7 +41,7 @@ async function LoginUser(req, res) {
     } else {
       res.json({
         status: "failure",
-        message: "User does not exist or password is incorrect.",
+        message: "User does not exist or email is incorrect.",
       });
     }
   } catch (error) {
