@@ -23,11 +23,10 @@ function generateVerificationCode(length) {
 async function RegisterUser(req, res) {
   try {
     const { users_email, users_password, users_phone } = req.body;
-    
+
     // الحصول على الجزء قبل علامة "@"
     const username = users_email.split("@")[0];
 
-    
     // التحقق من وجود البيانات
     if (!users_email || !users_password || !users_phone) {
       return res.status(400).json({
@@ -42,8 +41,6 @@ async function RegisterUser(req, res) {
       "users_email = ? OR users_phone = ?",
       [users_email, users_phone]
     );
-
- 
 
     // تشفير كلمة المرور
     const hashedPassword = await bcrypt.hash(users_password, 10);
@@ -61,38 +58,33 @@ async function RegisterUser(req, res) {
       users_verflyCode: verificationCode, // إضافة كود التحقق هنا
     };
 
+    if (checkUser.status === "success" && checkUser.data.length > 0) {
+      // إرسال البريد الإلكتروني برمز التحقق الجديد
+      await sentMail(
+        users_email,
+        "adnanbarakat111@gmail.com",
+        "Hello! Yabro",
+        verificationCode,
+        "https://i.pinimg.com/736x/69/a6/2a/69a62a5edc08d755dd8a4ef017e14c63.jpg"
+      );
+      return res.status(400).json({
+        status: "failure",
+        message: "User already exists with this email or phone.",
+      });
+    } else {
+      const result = await insertData("users", userData);
 
-
-
-   if (checkUser.status === "success" && checkUser.data.length > 0) {
-     // إرسال البريد الإلكتروني برمز التحقق الجديد
-     await sentMail(
-       email,
-       "adnanbarakat111@gmail.com",
-       "Hello! Yabro",
-       verificationCode,
-       "https://i.pinimg.com/736x/69/a6/2a/69a62a5edc08d755dd8a4ef017e14c63.jpg"
-     );
-     return res.status(400).json({
-       status: "failure",
-       message: "User already exists with this email or phone.",
-     });
-   }
-
-   else {
-     const result = await insertData("users", userData);
-
-     if (result.status === "success") {
-       res.json({
-         status: "success",
-         message: "User registered successfully.",
-       });
-     } else {
-       res.status(500).json({
-         status: "failure",
-         message: "Failed to register user.",
-       });
-     }
+      if (result.status === "success") {
+        res.json({
+          status: "success",
+          message: "User registered successfully.",
+        });
+      } else {
+        res.status(500).json({
+          status: "failure",
+          message: "Failed to register user.",
+        });
+      }
     }
   } catch (error) {
     console.error("Error registering user: ", error);
