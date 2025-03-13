@@ -90,7 +90,7 @@ async function RegisterUser(req, res) {
     console.error("Error registering user: ", error);
     res.status(500).json({
       status: "failure",
-      message: "There is a problem registering the user.",
+      message: "There is a problem registering the user."+users_email+ users_password+ users_phone,
     });
   }
 }
