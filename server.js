@@ -7,7 +7,17 @@ const verifyUserRoute = require("./routes/authRoutes/VfcRout");
 const resendVerifyUserRoute = require("./routes/authRoutes/ResendVfcUserRout");  
 const getConnection = require("./controllers/db/getConnection");  
 const mysql = require("mysql2/promise");
-
+// إعداد اتصال قاعدة البيانات  
+const dbConfig = {  
+host: "mysql.railway.internal",
+  user: "root",
+  password: "OJqazGQGUuBRhygpsVpDefAHKacQgKgg",
+  database: "railway" ,
+};  
+// دالة للحصول على اتصال بقاعدة البيانات
+async function getConnection1() {
+  return await mysql.createConnection(dbConfig);
+}
 const app = express();  
 const PORT = process.env.PORT || 3000;  
 
@@ -15,7 +25,7 @@ app.use(express.json());
 
 app.get("/", async (req, res) => {  
   try {  
-    await getConnection();  
+    await getConnection1();  
     res.json({ message: "Connected to the database successfully!" });  
   } catch (error) {  
     console.error(error);  
