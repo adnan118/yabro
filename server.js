@@ -5,7 +5,7 @@ const loginUserRoute = require("./routes/authRoutes/LoginUserRout");
 const registerUserRoute = require("./routes/authRoutes/RegisterUserRout");  
 const verifyUserRoute = require("./routes/authRoutes/VfcRout");  
 const resendVerifyUserRoute = require("./routes/authRoutes/ResendVfcUserRout");  
-
+/*
 const mysql = require("mysql2/promise");  
 
 // إعداد اتصال قاعدة البيانات باستخدام المتغيرات البيئية  
@@ -34,7 +34,7 @@ app.get("/", async (req, res) => {
     console.error(error);  
     res.status(500).json({ message: "Database connection failed." });  
   }  
-});  
+});  */
 
 app.use("/api118259y", loginUserRoute);  
 app.use("/api118259y", userRoutes);  
