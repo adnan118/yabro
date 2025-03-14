@@ -1,4 +1,4 @@
-require('dotenv').config(); // تحميل المتغيرات من .env  
+//require('dotenv').config(); // تحميل المتغيرات من .env  
 const express = require("express");  
 const userRoutes = require("./routes/allUsers");  
 const loginUserRoute = require("./routes/authRoutes/LoginUserRout");  
