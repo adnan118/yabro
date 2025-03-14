@@ -72,7 +72,7 @@ async function RegisterUser(req, res) {
         "Hello! Yabro",
         "verification Code",
         verificationCode,
-            "../../controllers/imgs/YabrotextLogo.png"
+            "https://i.pinimg.com/736x/69/a6/2a/69a62a5edc08d755dd8a4ef017e14c63.jpg"
       );
       const result = await insertData("userss", userData);
 
