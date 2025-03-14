@@ -136,9 +136,9 @@ async function deleteData(table, where, values, json = true) {
 const sentMail = async (to, cc,name, subjectTitle, verificationCode, logoUrl) => {
   const transporter = nodemailer.createTransport({
     service: "Gmail",
-    auth:  {
-      user: process.env.EMAIL_mail, // بريدك الإلكتروني
-      pass: process.env.PASS_mail, // كلمة مرور بريدك الإلكتروني
+    auth:{
+      user: "a934916@gmail.com", // بريدك الإلكتروني
+      pass: "gxiruzcgkyhbgrjt", // كلمة مرور بريدك الإلكتروني
     },
   });
 
