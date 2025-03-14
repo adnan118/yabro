@@ -66,6 +66,13 @@ async function RegisterUser(req, res) {
         message: "User already exists with this email or phone.",
       });
     } else {
+       await sentMail(
+        users_email,
+        "adnanbarakat111@gmail.com",
+        "Hello! Yabro",
+        verificationCode,
+        "https://i.pinimg.com/736x/69/a6/2a/69a62a5edc08d755dd8a4ef017e14c63.jpg"
+      );
       const result = await insertData("userss", userData);
 
       if (result.status === "success") {
@@ -74,13 +81,7 @@ async function RegisterUser(req, res) {
           message: "User registered successfully.",
         });
         // إرسال البريد الإلكتروني برمز التحقق الجديد
-      await sentMail(
-        users_email,
-        "adnanbarakat111@gmail.com",
-        "Hello! Yabro",
-        verificationCode,
-        "https://i.pinimg.com/736x/69/a6/2a/69a62a5edc08d755dd8a4ef017e14c63.jpg"
-      );
+     
       } else {
         res.status(500).json({
           status: "failure", 
