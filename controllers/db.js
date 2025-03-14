@@ -2,10 +2,10 @@ const mysql = require("mysql2/promise");
 
 // إعداد اتصال قاعدة البيانات  
 const dbConfig = {  
-host: "mysql.railway.internal",
-  user: "root",
-  password: "OJqazGQGUuBRhygpsVpDefAHKacQgKgg",
-  database: "railway" ,
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 };  
 // دالة للحصول على اتصال بقاعدة البيانات
 async function getConnection() {
