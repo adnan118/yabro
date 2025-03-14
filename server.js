@@ -5,9 +5,9 @@ const loginUserRoute = require("./routes/authRoutes/LoginUserRout");
 const registerUserRoute = require("./routes/authRoutes/RegisterUserRout");  
 const verifyUserRoute = require("./routes/authRoutes/VfcRout");  
 const resendVerifyUserRoute = require("./routes/authRoutes/ResendVfcUserRout");  
-/*
-const mysql = require("mysql2/promise");  
 
+const mysql = require("mysql2/promise");  
+/*
 // إعداد اتصال قاعدة البيانات باستخدام المتغيرات البيئية  
 const dbConfig = {  
   host: process.env.DB_HOST,  
