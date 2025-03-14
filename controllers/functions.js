@@ -3,6 +3,7 @@ const nodemailer = require("nodemailer");
 const path = require("path"); // استيراد هذا لتسهيل التعامل مع مسارات الملفات  
 
 const { getConnection } = require("./db");
+require('dotenv').config();  
 
 // دالة لاسترجاع جميع البيانات
 async function getAllData(table, where = null, values = null, json = true) {
@@ -136,8 +137,8 @@ const sentMail = async (to, cc,name, subjectTitle, verificationCode, logoUrl) =>
   const transporter = nodemailer.createTransport({
     service: "Gmail",
     auth: {
-      user: "a934916@gmail.com", // بريدك الإلكتروني
-      pass: "gxiruzcgkyhbgrjt", // كلمة مرور بريدك الإلكتروني
+      user: process.env.EMAIL_mail, // بريدك الإلكتروني
+      pass: process.env.PASS_mail, // كلمة مرور بريدك الإلكتروني
     },
   });
 
