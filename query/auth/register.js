@@ -37,7 +37,7 @@ async function RegisterUser(req, res) {
 
     // التحقق من وجود المستخدم مسبقًا
     const checkUser = await getAllData(
-      "users",
+      "userss",
       "users_email = ? OR users_phone = ?",
       [users_email, users_phone]
     );
