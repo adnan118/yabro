@@ -56,7 +56,7 @@ async function RegisterUser(req, res) {
       users_password: hashedPassword,
       users_phone: users_phone,
       users_img: "YabrotextLogo.png",
-      "users_approve":0,
+      users_approve:0,
       users_verflyCode: verificationCode, // إضافة كود التحقق هنا
     };
 
