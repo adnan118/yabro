@@ -150,7 +150,7 @@ const sentMail = async (to, cc,name, subjectTitle, verificationCode, logoUrl) =>
         <div style="text-align: center;">  
           <img src="${logoUrl}" alt="Logo yabro" style="width: 150px;"/>  
         </div>  
-        <h2 style="color: #333;">Dear, ${name}</h2>  
+        <h2 style="color: #333;">${name}</h2>  
         <p style="font-size: 16px; color: #555;">Your verification code is:</p>  
         <h3 style="color: #007BFF;">${verificationCode}</h3>  
         <p style="font-size: 16px; color: #555;">Please use this code to complete your registration.</p>  
