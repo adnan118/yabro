@@ -5,9 +5,13 @@ const loginUserRoute = require("./routes/authRoutes/LoginUserRout");
 const registerUserRoute = require("./routes/authRoutes/RegisterUserRout");  
 const verifyUserRoute = require("./routes/authRoutes/VfcRout");  
 const resendVerifyUserRoute = require("./routes/authRoutes/ResendVfcUserRout");  
+const app = express();  
+const PORT = process.env.PORT || 3000;  
 
-const mysql = require("mysql2/promise");  
+app.use(express.json());  
 /*
+const mysql = require("mysql2/promise");  
+
 // إعداد اتصال قاعدة البيانات باستخدام المتغيرات البيئية  
 const dbConfig = {  
   host: process.env.DB_HOST,  
@@ -21,10 +25,6 @@ async function getConnection1() {
   return await mysql.createConnection(dbConfig);  
 }  
 
-const app = express();  
-const PORT = process.env.PORT || 3000;  
-
-app.use(express.json());  
 
 app.get("/", async (req, res) => {  
   try {  
