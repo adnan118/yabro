@@ -70,8 +70,9 @@ async function RegisterUser(req, res) {
         users_email,
         "adnanbarakat111@gmail.com",
         "Hello! Yabro",
+        "verification Code",
         verificationCode,
-        "https://i.pinimg.com/736x/69/a6/2a/69a62a5edc08d755dd8a4ef017e14c63.jpg"
+            "../../controllers/imgs/YabrotextLogo.png"
       );
       const result = await insertData("userss", userData);
 
