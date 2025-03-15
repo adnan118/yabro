@@ -47,10 +47,7 @@ async function checkEmail(req, res) {
         ]);
 
           if (result.status === "success") {
-             res.json({
-             status: "success",
-             message: "ءءءءءءءءءءءءءءءءءءء",
-           });
+            
                await sentMail(
                  users_email,
                  "adnanbarakat111@gmail.com",
