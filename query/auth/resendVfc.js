@@ -29,7 +29,7 @@ async function resendVerificationCode(req, res) {
     }
 
     // توليد كود تحقق عشوائي مكون من أحرف وأرقام
-    const verificationCode = generateVerificationCode(5); // يمكن تغيير الطول حسب الحاجة
+    const verificationCode = generateVerificationCode(6); // يمكن تغيير الطول حسب الحاجة
 
     const data = {
       users_verflyCode: verificationCode,
