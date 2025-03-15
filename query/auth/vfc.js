@@ -1,12 +1,11 @@
-const { getAllData, updateData } = require("../../controllers/functions"); // تأكد من استيراد الدوال المناسبة
-const nodemailer = require("nodemailer"); // استخدم nodemailer لإرسال البريد الإلكتروني
+const { getAllData, updateData } = require("../../controllers/functions");
+const nodemailer = require("nodemailer");  
 
  
 
-// دالة للتحقق من البريد الإلكتروني وكود التحقق
-async function VerifyUser(req, res) {
+ async function VerifyUser(req, res) {
   try {
-    const { users_email, users_verflyCode } = req.body; // الحصول على البريد وكود التحقق من الجسم
+    const { users_email, users_verflyCode } = req.body;  
 
     // التحقق من وجود البيانات
     if (!users_email || !users_verflyCode) {
@@ -16,9 +15,8 @@ async function VerifyUser(req, res) {
       });
     }
 
-    // استرجاع بيانات المستخدم من قاعدة البيانات باستخدام الدالة getAllData
     const result = await getAllData(
-      "users",
+      "userss",
       "users_email = ? AND users_verflyCode = ?",
       [users_email, users_verflyCode]
     );
@@ -27,7 +25,7 @@ async function VerifyUser(req, res) {
     if (result.status === "success" && result.data.length > 0) {
       // تحديث حالة المستخدم إلى معتمد
       const updateResponse = await updateData(
-        "users",
+        "userss",
         { users_approve: "1" },
         "users_email = ?",
         [users_email]
