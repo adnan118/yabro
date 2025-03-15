@@ -6,6 +6,7 @@ const registerUserRoute = require("./routes/authRoutes/RegisterUserRout");
 const verifyUserRoute = require("./routes/authRoutes/VfcRout");  
 const resendVerifyUserRoute = require("./routes/authRoutes/ResendVfcUserRout");  
 const checkemailRout = require("./routes/authRoutes/CheckemailRout");
+const fgPassword = require("./routes/authRoutes/FgpasswordRout");
 
 const app = express();  
 const PORT = process.env.PORT || 3000;  
@@ -44,6 +45,7 @@ app.use("/api118259y", registerUserRoute);
 app.use("/api118259y", verifyUserRoute);  
 app.use("/api118259y", resendVerifyUserRoute);  
 app.use("/api118259y", checkemailRout);
+app.use("/api118259y", fgPassword);
 
 app.listen(PORT, () => {  
   console.log(`Server is running on http://localhost:${PORT}`);  
