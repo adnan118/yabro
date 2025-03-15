@@ -15,7 +15,7 @@ async function LoginUser(req, res) {
     }
 
     // استرجاع بيانات المستخدم من قاعدة البيانات دون كلمة المرور
-    const result = await getAllData("users", "users_email = ?", [users_email]);
+    const result = await getAllData("userss", "users_email = ?", [users_email]);
 
     // التحقق من النتيجة
     if (result.status === "success" && result.data.length > 0) {
