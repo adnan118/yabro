@@ -3,7 +3,7 @@ const { getAllData } = require("../controllers/functions");
 // دالة لجلب بيانات منتج بناءً على معرفه
 async function AllUsers(req, res) {
   try {
-    const result = await getAllData("users");
+    const result = await getAllData("userss");
     res.json(result);
     console.log(result);
   } catch (error) {
@@ -12,7 +12,7 @@ async function AllUsers(req, res) {
       .status(500)
       .json({
         status: "failure",
-        message: "There is a problem retrieving data q",
+        message: "There is a problem retrieving data ",
       });
   }
 }
