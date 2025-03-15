@@ -36,7 +36,7 @@ async function resendVerificationCode(req, res) {
     };
 
     // تحديث كود التحقق في قاعدة البيانات
-    const updateResponse = await updateData("users", data, "users_email = ?", [
+    const updateResponse = await updateData("userss", data, "users_email = ?", [
       users_email,
     ]);
 
