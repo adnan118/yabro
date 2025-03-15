@@ -4,6 +4,6 @@ const { FgPassword } = require("../../query/auth/checkEmail");
 
 const router = express.Router();
 
-router.post("/fgpasswordRout", FgPassword);
+router.post("/fgpassword", FgPassword);
 
 module.exports = router;
