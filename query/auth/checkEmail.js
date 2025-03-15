@@ -24,10 +24,10 @@ async function checkEmail() {
 
       // التحقق من وجود البيانات
       if (!users_email) {
-        return res.status(400).json({
-          status: "failure",
-          message: "email must be entered.",
-        });
+       res.json({
+         status: "failure",
+         message: "email must be entered.",
+       });
       }
 
       // التحقق من وجود المستخدم مسبقًا
@@ -47,15 +47,18 @@ async function checkEmail() {
             verificationCode,
             "https://i.pinimg.com/736x/69/a6/2a/69a62a5edc08d755dd8a4ef017e14c63.jpg"
           );
-          return res.status(400).json({
-            status: "success",
-            message: "vfcode send to your email",
-          });
+           res.json({
+             status: "success",
+             message: "vfcode send to your email",
+           });
         } else {
-        return res.status(400).json({
-          status: "failure",
-          message: "Failed this email not founded.",
-        });
+       res.json({
+         status: "failure",
+         message: "Failed this email not founded.",
+       });
+            
+            
+            
       }
     } catch (error) {
       console.error("Error fetching data: ", error);
