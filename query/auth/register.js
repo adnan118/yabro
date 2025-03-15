@@ -55,10 +55,9 @@ async function RegisterUser(req, res) {
       users_email: users_email,
       users_password: hashedPassword,
       users_phone: users_phone,
-       users_approve:0,
+      users_approve:0,
       users_img: "YabrotextLogo.png",
-     
-      users_verflyCode: verificationCode, // إضافة كود التحقق هنا
+      users_verflyCode: verificationCode,  
     };
 
     if (checkUser.status === "success" && checkUser.data.length > 0) {
@@ -88,7 +87,7 @@ async function RegisterUser(req, res) {
       } else {
         res.status(500).json({
           status: "failure", 
-            message: `Failed to register user. ${users_email}, ${users_password}, ${users_phone}`,  
+            message: `Failed to register user.`,  
 
         });
       }
@@ -97,7 +96,7 @@ async function RegisterUser(req, res) {
     console.error("Error registering user: ", error);
     res.status(500).json({
       status: "failure",
-  message: `There is a problem registering the user: ${users_email}, ${users_password}, ${users_phone}`,  
+  message: `There is a problem registering the user.`,  
     });
   }
 }
