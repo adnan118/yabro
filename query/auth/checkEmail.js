@@ -16,7 +16,7 @@ function generateVerificationCode(length) {
   return code;
 }
 
-async function checkEmail() {
+async function checkEmail(req, res) {
  
     try {
 
