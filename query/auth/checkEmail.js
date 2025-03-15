@@ -41,7 +41,7 @@ async function checkEmail(req, res) {
         };
 
         // تحديث كود التحقق في قاعدة البيانات
-        const result = await updateData("users", data, "users_email = ?", [
+        const result = await updateData("userss", data, "users_email = ?", [
           users_email,
         ]);
 
