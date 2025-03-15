@@ -1,4 +1,4 @@
-const { getAllData, updateData } = require("../../controllers/functions"); 
+const { updateData } = require("../../controllers/functions"); 
  
 async function FgPassword(req, res) {
   try {
