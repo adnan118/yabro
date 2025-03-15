@@ -46,7 +46,7 @@ async function RegisterUser(req, res) {
     const hashedPassword = await bcrypt.hash(users_password, 10);
 
     // توليد كود تحقق عشوائي مكون من أحرف وأرقام
-    const verificationCode = generateVerificationCode(6); // يمكن تغيير الطول حسب الحاجة
+    const verificationCode = generateVerificationCode(5); // يمكن تغيير الطول حسب الحاجة
 
     // إدخال البيانات في قاعدة البيانات
     const userData = {
