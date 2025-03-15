@@ -1,5 +1,5 @@
 const { updateData } = require("../../controllers/functions"); 
- 
+ const bcrypt = require("bcrypt");
 async function FgPassword(req, res) {
   try {
     const { users_email, users_password } = req.body; // الحصول على البريد وكود التحقق من الجسم
