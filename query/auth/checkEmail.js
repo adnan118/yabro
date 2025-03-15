@@ -1,6 +1,6 @@
  const {
   getAllData,
-   sentMail,
+   sentMail,updateData
 } = require("../../controllers/functions");
 // دالة لتوليد كود تحقق عشوائي مكون من أحرف وأرقام
 function generateVerificationCode(length) {
