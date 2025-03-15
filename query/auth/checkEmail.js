@@ -1,6 +1,8 @@
-const { getAllData } = require("../../controllers/functions");
-const nodemailer = require("nodemailer");
-
+ const nodemailer = require("nodemailer");
+const {
+  getAllData,
+   sentMail,
+} = require("../../controllers/functions");
 // دالة لتوليد كود تحقق عشوائي مكون من أحرف وأرقام
 function generateVerificationCode(length) {
   const chars =
