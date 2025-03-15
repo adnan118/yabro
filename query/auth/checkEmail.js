@@ -17,56 +17,69 @@ function generateVerificationCode(length) {
 }
 
 async function checkEmail(req, res) {
- 
-    try {
+  try {
+    const { users_email } = req.body;
 
-      const { users_email } = req.body;
+    // التحقق من وجود البيانات
+    if (!users_email) {
+      res.json({
+        status: "failure",
+        message: "email must be entered.",
+      });
+    }
 
-      // التحقق من وجود البيانات
-      if (!users_email) {
-       res.json({
-         status: "failure",
-         message: "email must be entered.",
-       });
-      }
+    // التحقق من وجود المستخدم مسبقًا
+    const checkUser = await getAllData("userss", "users_email = ? ", [
+      users_email,
+    ]);
 
-      // التحقق من وجود المستخدم مسبقًا
-      const checkUser = await getAllData("userss", "users_email = ? ", [
-        users_email,
-      ]);
+      if (checkUser.status === "success" && checkUser.data.length > 0) {
+        const verificationCode = generateVerificationCode(6); // يمكن تغيير الطول حسب الحاجة
 
-        if (checkUser.status === "success" && checkUser.data.length > 0) {
-          const verificationCode = generateVerificationCode(6); // يمكن تغيير الطول حسب الحاجة
+        const data = {
+          users_verflyCode: verificationCode,
+        };
 
-          // إرسال البريد الإلكتروني برمز التحقق الجديد
-          await sentMail(
-            users_email,
-            "adnanbarakat111@gmail.com",
-            "Hello! Yabro",
-            "verification Code",
-            verificationCode,
-            "https://i.pinimg.com/736x/69/a6/2a/69a62a5edc08d755dd8a4ef017e14c63.jpg"
-          );
+        // تحديث كود التحقق في قاعدة البيانات
+        const result = await updateData("users", data, "users_email = ?", [
+          users_email,
+        ]);
+
+          if (result.status === "success") {
+               await sentMail(
+                 users_email,
+                 "adnanbarakat111@gmail.com",
+                 "Hello! Yabro",
+                 "verification Code",
+                 verificationCode,
+                 "https://i.pinimg.com/736x/69/a6/2a/69a62a5edc08d755dd8a4ef017e14c63.jpg"
+               );
            res.json({
              status: "success",
              message: "vfcode send to your email",
            });
         } else {
-       res.json({
-         status: "failure",
-         message: "Failed this email not founded.",
-       });
-            
-            
-            
-      }
-    } catch (error) {
-      console.error("Error fetching data: ", error);
-      res.status(500).json({
+           res.json({
+             status: "failure",
+             message: "Failed send to your email.",
+           });
+        }
+       
+
+       
+      } else {
+      res.json({
         status: "failure",
-        message: "There is a problem retrieving data",
+        message: "Failed this email not founded.",
       });
     }
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+    res.status(500).json({
+      status: "failure",
+      message: "There is a problem retrieving data",
+    });
+  }
 }
 
 // تصدير الدالة
