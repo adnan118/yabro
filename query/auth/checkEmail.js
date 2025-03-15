@@ -34,10 +34,7 @@ async function checkEmail(req, res) {
     ]);
 
       if (checkUser.status === "success" && checkUser.data.length > 0) {
-        res.json({
-             status: "success",
-             message: "ءءءءءءءءءءءءءءءءءءء",
-           });
+      
         const verificationCode = generateVerificationCode(6); // يمكن تغيير الطول حسب الحاجة
 
         const data = {
@@ -50,6 +47,10 @@ async function checkEmail(req, res) {
         ]);
 
           if (result.status === "success") {
+             res.json({
+             status: "success",
+             message: "ءءءءءءءءءءءءءءءءءءء",
+           });
                await sentMail(
                  users_email,
                  "adnanbarakat111@gmail.com",
