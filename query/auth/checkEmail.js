@@ -1,5 +1,4 @@
- const nodemailer = require("nodemailer");
-const {
+ const {
   getAllData,
    sentMail,
 } = require("../../controllers/functions");
@@ -17,7 +16,7 @@ function generateVerificationCode(length) {
   return code;
 }
 
-async function checkEmail(email) {
+async function checkEmail() {
  
     try {
       const verificationCode = generateVerificationCode(6); // يمكن تغيير الطول حسب الحاجة
