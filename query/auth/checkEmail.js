@@ -19,7 +19,6 @@ function generateVerificationCode(length) {
 async function checkEmail() {
  
     try {
-      const verificationCode = generateVerificationCode(6); // يمكن تغيير الطول حسب الحاجة
 
       const { users_email } = req.body;
 
@@ -36,21 +35,23 @@ async function checkEmail() {
         users_email,
       ]);
 
-      if (checkUser.status === "success" && checkUser.data.length > 0) {
-        // إرسال البريد الإلكتروني برمز التحقق الجديد
-        await sentMail(
-          users_email,
-          "adnanbarakat111@gmail.com",
-          "Hello! Yabro",
-          "verification Code",
-          verificationCode,
-          "https://i.pinimg.com/736x/69/a6/2a/69a62a5edc08d755dd8a4ef017e14c63.jpg"
-        );
-        return res.status(400).json({
-          status: "success",
-          message: "vfcode send to your email",
-        });
-      } else {
+        if (checkUser.status === "success" && checkUser.data.length > 0) {
+          const verificationCode = generateVerificationCode(6); // يمكن تغيير الطول حسب الحاجة
+
+          // إرسال البريد الإلكتروني برمز التحقق الجديد
+          await sentMail(
+            users_email,
+            "adnanbarakat111@gmail.com",
+            "Hello! Yabro",
+            "verification Code",
+            verificationCode,
+            "https://i.pinimg.com/736x/69/a6/2a/69a62a5edc08d755dd8a4ef017e14c63.jpg"
+          );
+          return res.status(400).json({
+            status: "success",
+            message: "vfcode send to your email",
+          });
+        } else {
         return res.status(400).json({
           status: "failure",
           message: "Failed this email not founded.",
