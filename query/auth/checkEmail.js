@@ -34,6 +34,8 @@ async function checkEmail(req, res) {
     ]);
 
       if (checkUser.status === "success" && checkUser.data.length > 0) {
+       status: "success",
+             message: "vfcode send to your emailءءءءءءءءءءءءءءءءءءءءءءءءءء",
         const verificationCode = generateVerificationCode(6); // يمكن تغيير الطول حسب الحاجة
 
         const data = {
