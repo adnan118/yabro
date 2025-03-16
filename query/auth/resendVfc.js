@@ -17,9 +17,7 @@ function generateVerificationCode(length) {
 async function resendVerificationCode(req, res) {
   try {
     const { users_email } = req.body; // الحصول على البريد الإلكتروني من الجسم
-   // الحصول على الجزء قبل علامة "@"
-    const username = users_email.split("@")[0];
-
+    
     // التحقق من وجود البريد الإلكتروني
     if (!users_email) {
       return res.status(400).json({
@@ -42,14 +40,14 @@ async function resendVerificationCode(req, res) {
 
     if (updateResponse.status === "success") {
       // إرسال البريد الإلكتروني برمز التحقق الجديد
-      sentMail(
+        sentMail(
         users_email,
         "adnanbarakat111@gmail.com",
-        username,
         "Hello! Yabro",
+        "verification Code",
         verificationCode,
         "https://i.pinimg.com/736x/69/a6/2a/69a62a5edc08d755dd8a4ef017e14c63.jpg"
-      );  
+      ); 
       res.json({
         status: "success",
         message: "Verification code sent successfully.",
